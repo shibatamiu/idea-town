@@ -13,4 +13,7 @@ class Thought < ApplicationRecord
 
     has_many :thought_tags, dependent: :destroy
     has_many :tags, through: :thought_tags
+
+    #scope :select_thought, ->(thought) { where('name = ?', thought) }
+    scope :select_thought, ->(thought) { where('thoughts.created_at = ?', thought) }
 end
