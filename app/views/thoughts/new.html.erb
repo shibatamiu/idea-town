@@ -1,0 +1,34 @@
+<h1></h1>
+<h3>新規アイデア</h3>
+
+<%= form_for @thought do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, :size => 140 %>
+  </div>
+  <div class="field">
+    <%= f.label :about %>
+    <%= f.text_field :about, :size => 140 %>
+  </div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="check_box">
+    <span>タグ</span>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div>
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "アイデア一覧に戻る", thoughts_path %>

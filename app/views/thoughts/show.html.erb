@@ -1,0 +1,69 @@
+<h1>GeekTwitter</h1>
+<h3>Thought詳細</h3>
+<div class="thought">
+    <p><%= @thought.title %></p>
+    <p><%= @thought.about %></p>
+    <p><%= image_tag @thought.image_url, size: "250x200" if @thought.image? %></p>
+    <% @thought.tags.each do |tag| %>
+        <%= tag.name %>
+    <% end %>
+    <p><%= @thought.created_at %></p>
+
+
+    <% if user_signed_in? %>
+        <% if current_user.already_liked?(@thought) %>
+            <%= link_to thought_like_path(@thought), method: :delete do %>
+                <i class="fas fa-heart"></i><%= @thought.likes.count %>
+            <% end %>
+        <% else %>
+            <%= link_to thought_likes_path(@thought), method: :post do %>
+                <i class="fas fa-heart"></i><%= @thought.likes.count %>
+            <% end %>
+        <% end %>
+    <% else %>
+        <i class="fas fa-heart"></i><%= @thought.likes.count %>
+    <% end %>
+
+    <% if user_signed_in? %>
+        <% if current_user.already_counted?(@thought) %>
+            <%= link_to thought_count_path(@thought), method: :delete do %>
+                <p>やってみた！</p><%= @thought.counts.count %>
+            <% end %>
+        <% else %>
+            <%= link_to thought_counts_path(@thought), method: :post do %>
+                <p>やってみた！</p><%= @thought.counts.count %>
+            <% end %>
+        <% end %>
+    <% else %>
+        <p>やってみた！の数 = </p><%= @thought.counts.count %>
+    <% end %>
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @thought.liked_users.each do |user| %>
+    <li><%= user.email %></li>
+<% end %>
+
+<div class="comment-wrapper">
+    <p>コメント一覧</p>
+    <% @comments.each do |c| %>
+        <div>
+            <%= c.user.email unless c.user.blank? %>
+            <br>
+            <%= c.content %>
+        </div>
+            <br>
+    <% end %>
+
+    <% if user_signed_in? %>
+        <%= form_with(model: [@thought, @comment], local: true) do |f| %>
+            <%= f.text_area :content %>
+            <%= button_tag type: "submit" do %>
+                <i class="far fa-comments"></i> コメントする
+            <% end %>
+        <% end %>
+    <% end %>
+</div>
+
+<%= link_to "編集する", edit_thought_path(@thought.id) %>
+<%= link_to "Thought一覧に戻る", thoughts_path %>

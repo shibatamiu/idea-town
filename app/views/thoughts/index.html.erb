@@ -1,0 +1,129 @@
+<h1></h1>
+<% if user_signed_in? %>
+<%= link_to "マイページへ", user_path(current_user.id) %>　
+<% end %>
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+
+<h3>投稿を検索</h3>
+    <%= form_tag({controller:"thoughts",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '検索する'  %>
+    <% end %>
+
+    <%= form_tag thoughts_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id,
+                    options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                    {
+                        prompt: 'タグで絞り込み検索',
+                        onchange: 'submit(this.form);'
+                    }
+        %>
+    <% end %>
+
+<br>
+<%= link_to "いいねランキング", ranks_rank_path %>
+<br>
+<br>
+<h3>アイデア一覧</h3>
+
+<%= page_entries_info @thoughts %>
+
+<div class="thoughts-container">
+    <% @thoughts.each do |t| %>
+        <div class="thought">
+            <%= t.title %>
+            <%= t.about %>
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+            <% t.tags.each do |tag| %>
+                <%= tag.name %>
+            <% end %>
+            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+            <%= t.user.email %>
+
+            <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                    <%= link_to thought_like_path(id: t.id, thought_id: t.id), method: :delete do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                <% else %>
+                    <%= link_to thought_likes_path(id: t.id, thought_id: t.id), method: :post do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                <% end %>
+            <% else %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>
+            <% end %>
+
+            <% if user_signed_in? %>
+                <% if current_user.already_counted?(t) %>
+                    <%= button_to thought_count_path(id: t.id, thought_id: t.id), method: :delete do %>
+                        <p>やってみた！</p><%= t.counts.count %>
+                    <% end %>
+                <% else %>
+                    <%= button_to thought_counts_path(id: t.id, thought_id: t.id), method: :post do %>
+                        <p>やってみた！</p><%= t.counts.count %>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <p>やってみた！の数 = </p><%= t.counts.count %>
+            <% end %>
+
+            <%= t.created_at %>
+            <%= link_to "詳細へ", thought_path(t.id) %>
+            <% if user_signed_in? && current_user.id == t.user_id %>
+                <%= link_to "編集する", edit_thought_path(t.id) %>
+                <%= link_to "削除する", thought_path(t.id), method: :delete %>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+
+<%= paginate @thoughts %>
+<br>
+<br>
+
+
+
+<h3>いいねランキング</h3>
+<br>
+<%= page_entries_info @thoughts %>
+
+<% @rank_thoughts.each do |t| %>
+    <div class="thought">
+            <%= t.title %>
+            <%= t.about %>
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+            <% t.tags.each do |tag| %>
+                <%= tag.name %>
+            <% end %>
+            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+            <%= t.user.email %>
+
+            <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                    <%= link_to thought_like_path(id: t.id, thought_id: t.id), method: :delete do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                <% else %>
+                    <%= link_to thought_likes_path(id: t.id, thought_id: t.id), method: :post do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                <% end %>
+            <% else %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>
+            <% end %>
+
+            <%= t.created_at %>
+            <%= link_to "詳細へ", thought_path(t.id) %>
+            <% if user_signed_in? && current_user.id == t.user_id %>
+                <%= link_to "編集する", edit_thought_path(t.id) %>
+                <%= link_to "削除する", thought_path(t.id), method: :delete %>
+            <% end %>
+    </div>
+<% end %>
+
+<%= paginate @thoughts %>
+
+<br>
+<br>
+<br>

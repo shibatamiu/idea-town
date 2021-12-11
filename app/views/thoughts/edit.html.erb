@@ -1,0 +1,7 @@
+<%= form_for @thought do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :size => 140 %> 
+    <%= f.label :about %>
+    <%= f.text_field :about, :size => 140 %> 
+    <%= f.submit "編集する" %>
+<% end %>
