@@ -25,7 +25,7 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 200 }
 
 
-  scope :thought_users, ->(thought) { joins(:thoughts).merge(Thought.select_thought(thought)) }
+  #scope :thought_users, ->(thought) { joins(:thoughts).merge(Thought.select_thought(thought)) }
 
 
 end

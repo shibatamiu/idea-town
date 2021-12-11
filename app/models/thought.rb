@@ -15,5 +15,5 @@ class Thought < ApplicationRecord
     has_many :tags, through: :thought_tags
 
     #scope :select_thought, ->(thought) { where('name = ?', thought) }
-    scope :select_thought, ->(thought) { where('thoughts.created_at = ?', thought) }
+    #scope :select_thought, ->(thought) { where('thoughts.created_at = ?', thought) }
 end
