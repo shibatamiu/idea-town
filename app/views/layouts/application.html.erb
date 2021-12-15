@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Original</title>
+    <title>Idea Town</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,11 +14,15 @@
 
   <body>
     <header>
-      <h1>original</h1>
+      <h1>Idea Town</h1>
       <div class="header-list">
       <ul>
         <li><%= link_to "ホーム", thoughts_path %></li>
         <li><%= link_to "新規投稿",new_thought_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "マイページへ", user_path(current_user.id) %></li>　
+        <% end %>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li> 
       </ul>
       </div>
     </header>

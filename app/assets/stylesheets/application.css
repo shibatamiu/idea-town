@@ -26,7 +26,7 @@ body {
     }
 
 header {
-    background-color: #00acee;
+    background-color: #8cbed6;
     height: 80px;
     font-weight: bold;
     display: flex;
@@ -51,6 +51,7 @@ header h1 {
 
 header ul {
     display: flex;
+    justify-content: flex-end;
     }
 
 header li {
