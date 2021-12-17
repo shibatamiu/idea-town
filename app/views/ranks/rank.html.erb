@@ -25,8 +25,8 @@
         <div class="main-box">
         <div class="left-container">
             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
-            <h4><%= t.title %></h4>
-            <p><%= t.about %></p>
+            <h4><%= safe_join(t.title.split("\n"),tag(:br)) %></h4>
+            <p><%= safe_join(t.about.split("\n"),tag(:br)) %></p>
             <p><%= image_tag t.image_url, size: "250x200" if t.image? %></p>
             <ul class="cp_tag01"><% t.tags.each do |tag| %>
                 <li><%= tag.name %></li>
@@ -53,21 +53,24 @@
                 <% if current_user.already_counted?(t) %>
                 <div class="button">
                     <%= link_to thought_count_path(id: t.id, thought_id: t.id), method: :delete do %>
-                        <p>やってみた！</p><p><%= t.counts.count %></p>
+                        <p>やってみた！</p>
+                        </div>
+                        <p class="count"><%= t.counts.count %></p>
                     <% end %>
-                    </div>
                 <% else %>
                 <div class="button">
                     <%= link_to thought_counts_path(id: t.id, thought_id: t.id), method: :post do %>
-                        <p>やってみた！</p><p><%= t.counts.count %></p>
+                        <p>やってみた！</p>
+                        </div>
+                        <p class="count"><%= t.counts.count %></p>
                     <% end %>
-                    </div>
                 <% end %>
             <% else %>
             <div class="button">
-                <p>やってみた！の数 = </p><p><%= t.counts.count %></p>
+                <p>やってみた！の数 = </p>
+                </div>
+                <p class="count"><%= t.counts.count %></p>
             <% end %>
-            </div>
         </div>
 
         <div class="right-container">
@@ -84,7 +87,5 @@
 
 <br>
 <nav class="pagenation"><%= paginate @thoughts %></nav>
-
-<br>
 <br>
 <br>

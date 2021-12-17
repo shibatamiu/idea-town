@@ -29,16 +29,14 @@
 
 <h3>アイデア新着一覧</h3>
 
-
-
 <div class="thoughts-container">
     <% @thoughts.each do |t| %>
         <div class="thought">
         <div class="main-box">
         <div class="left-container">
             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
-            <h4><%= t.title %></h4>
-            <p><%= t.about %></p>
+            <h4><%= safe_join(t.title.split("\n"),tag(:br)) %></h4>
+            <p><%= safe_join(t.about.split("\n"),tag(:br)) %></p>
             <p><%= image_tag t.image_url, size: "250x200" if t.image? %></p>
             <ul class="cp_tag01"><% t.tags.each do |tag| %>
                 <li><%= tag.name %></li>
