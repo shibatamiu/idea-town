@@ -1,16 +1,40 @@
+<br>
+<br>
+<div class="search">
+<%= form_tag ranks_rank_path, method: :get, class: 'boards__searchForm' do %>
+    <%= select_tag :tag_id,
+                options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                {
+                    prompt: 'タグで絞り込む',
+                    onchange: 'submit(this.form);'
+                }
+    %>
+<% end %>
+</div>
+
+<br>
+<br>
+
+
 <h3>いいねランキング</h3>
 <br>
+
+<div class="thoughts-container">
 <% @rank_thoughts.each do |t| %>
     <div class="thought">
-            <%= t.title %>
-            <%= t.about %>
-            <%= image_tag t.image_url, size: "250x200" if t.image? %>
-            <% t.tags.each do |tag| %>
-                <%= tag.name %>
-            <% end %>
+        <div class="main-box">
+        <div class="left-container">
             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
-            <%= t.user.email %>
+            <h4><%= t.title %></h4>
+            <p><%= t.about %></p>
+            <p><%= image_tag t.image_url, size: "250x200" if t.image? %></p>
+            <ul class="cp_tag01"><% t.tags.each do |tag| %>
+                <li><%= tag.name %></li>
+            <% end %></ul>
+        </div>
 
+        <br>
+        <div class="box">
             <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
                     <%= link_to thought_like_path(id: t.id, thought_id: t.id), method: :delete do %>
@@ -25,11 +49,42 @@
             <i class="fas fa-heart"></i><%= t.likes.count %>
             <% end %>
 
-            <%= t.created_at %>
-            <%= link_to "詳細へ", thought_path(t.id) %>
-            <% if user_signed_in? && current_user.id == t.user_id %>
-                <%= link_to "編集する", edit_thought_path(t.id) %>
-                <%= link_to "削除する", thought_path(t.id), method: :delete %>
+            <% if user_signed_in? %>
+                <% if current_user.already_counted?(t) %>
+                <div class="button">
+                    <%= link_to thought_count_path(id: t.id, thought_id: t.id), method: :delete do %>
+                        <p>やってみた！</p><p><%= t.counts.count %></p>
+                    <% end %>
+                    </div>
+                <% else %>
+                <div class="button">
+                    <%= link_to thought_counts_path(id: t.id, thought_id: t.id), method: :post do %>
+                        <p>やってみた！</p><p><%= t.counts.count %></p>
+                    <% end %>
+                    </div>
+                <% end %>
+            <% else %>
+            <div class="button">
+                <p>やってみた！の数 = </p><p><%= t.counts.count %></p>
             <% end %>
-    </div>
-<% end %>
+            </div>
+        </div>
+
+        <div class="right-container">
+            <p><%= t.created_at.strftime('%Y/%m/%d') %></p>
+            <p><%= link_to "詳細へ", thought_path(t.id) %></p>
+            <% if user_signed_in? && current_user.id == t.user_id %>
+                <p><%= link_to "編集する", edit_thought_path(t.id) %></p>
+                <p><%= link_to "削除する", thought_path(t.id), method: :delete %></p>
+            <% end %>
+        </div>
+        </div>
+    <% end %>
+</div>
+
+<br>
+<nav class="pagenation"><%= paginate @thoughts %></nav>
+
+<br>
+<br>
+<br>

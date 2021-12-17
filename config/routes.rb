@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     get 'ranks/rank' =>'ranks#rank'
 
 
-root 'thoughts#index'
+root 'hello#index'
 end
