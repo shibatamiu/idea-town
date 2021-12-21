@@ -21,43 +21,112 @@
     }
 
 body {
-    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
-    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+    font-family: "メイリオ","Meiryo", "游ゴシック","Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
     }
-
-header {
-    background-color: #8cbed6;
-    height: 80px;
+.image-logo{
+    margin-top: -40px;
+}
+.page-header {
+    background-color: #fff;
+    height: 85px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    padding-top:50px;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #989898;
     }
 
-header a {
-    color: white; 
+.page-header a {
+    font-family: '筑紫A丸ゴシック', sans-serif;
+    font-weight: bold;
+    color: black;
     text-decoration: none; 
-    }
-
-header h1 {
-    color: white;
-    margin-left: 20px;
     }
 
 .header-list {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    
     }
 
-header ul {
+.header-list ul {
     display: flex;
     justify-content: flex-end;
     }
 
-header li {
+.header-list li {
     list-style: none;
     margin-right: 40px;
+    align-items: flex-start;
     }
+
+.header-list a{
+    color: #696969;
+}
+.header-list a:hover{
+    color:#5e99b9;
+}
+.header-list li:hover{
+    color:#5e99b9;
+}
+
+.material-icons-outlined {
+    font-family: 'Material Icons Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -moz-font-feature-settings: 'liga';
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: -4px;
+    margin-right: -7px;
+    color: #696969;
+}
+
+
+#list-1:before{
+    font-family: 'Material Icons';
+    content: '\e88a';
+    vertical-align: -2px;
+    margin-right:2px;
+    font-size:18px;
+    
+}
+
+#list-2:before{
+    font-family: 'Material Icons';
+    content: '\e145';
+    vertical-align: -2px;
+    margin-right:2px;
+    font-size:18px;
+}
+#list-3:before{
+    font-family: 'Material Icons';
+    content: '\e9ba';
+    vertical-align: -2px;
+    margin-right:2px;
+    font-size:18px;
+}
+#list-4:before{
+    font-family: 'Material Icons';
+    content: '\e853';
+    vertical-align: -2px;
+    margin-right:2px;
+    font-size:18px;
+}
+
+
+
+
 
 footer {
     color: white;

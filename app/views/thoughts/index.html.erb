@@ -4,10 +4,15 @@
 <br>
 <h3>投稿を検索</h3>
 <div class="search">
-    <%= form_tag({controller:"thoughts",action:"index"}, method: :get) do %>
+    <div class="search-1">
+<span class="material-icons-outlined">
+search
+</span>
+<%= form_tag({controller:"thoughts",action:"index"}, method: :get) do %>
         <p><%= text_field_tag :search %>
         <%= submit_tag '検索する'  %></p>
     <% end %>
+    </div>
 
     <%= form_tag thoughts_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :tag_id,
