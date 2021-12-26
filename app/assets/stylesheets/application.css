@@ -128,7 +128,13 @@ body {
     margin-right:2px;
     font-size:18px;
 }
-
+#list-6:before{
+    font-family: 'Material Icons';
+    content: '\e7fe';
+    vertical-align: -3px;
+    margin-right:2px;
+    font-size:18px;
+}
 
 
 

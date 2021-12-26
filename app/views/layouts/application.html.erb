@@ -28,9 +28,12 @@
     </div>
       <div class="header-list">
       <ul>
-        <li><a href="/thoughts" id="list-1">ホーム</a></li>
+        <li><% if user_signed_in? %><a href="/thoughts" id="list-1">ホーム</a><% end %></li>
 
-        <li><a href="/thoughts/new" id="list-2">新規投稿</a></li>
+        <li>
+        <% if user_signed_in? %><a href="/thoughts/new" id="list-2">新規投稿</a>
+        <% else %><a rel="nofollow" data-method="get" href="/users/sign_in" id="list-6">新規登録</a>
+        <% end %></li>
 
         <li>
         <% if user_signed_in? %><a rel="nofollow" data-method="delete" href="/users/sign_out" id="list-3">ログアウト</a>
