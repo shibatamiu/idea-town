@@ -20,19 +20,19 @@
 
     <br>
     <div class="box">
-    <% if user_signed_in? %>
-            <% if current_user.already_liked?(@thought) %>
-                <%= link_to thought_like_path(@thought), method: :delete do %>
-                    <i class="fas fa-heart"></i><%= @thought.likes.count %>
+            <% if user_signed_in? %>
+                <% if current_user.already_liked?(@thought) %>
+                    <%= link_to thought_like_path(@thought), method: :delete do %>
+                        <p class="like1"><%= @thought.likes.count %></p>
+                    <% end %>
+                <% else %>
+                    <%= link_to thought_likes_path(@thought), method: :post do %>
+                        <p class="like2"><%= @thought.likes.count %></p>
+                    <% end %>
                 <% end %>
             <% else %>
-                <%= link_to thought_likes_path(@thought), method: :post do %>
-                    <i class="fas fa-heart"></i><%= @thought.likes.count %>
-                <% end %>
+            <p class="like3"><%= @thought.likes.count %></p>
             <% end %>
-        <% else %>
-        <i class="fas fa-heart"></i><%= @thought.likes.count %>
-        <% end %>
 
         <% if user_signed_in? %>
                 <% if current_user.already_counted?(@thought) %>
@@ -74,7 +74,7 @@
     <p>コメント一覧</p>
     <% @comments.each do |c| %>
         <div>
-            <%= c.user.email unless c.user.blank? %>
+            <%= c.user.name unless c.user.blank? %>
             <br>
             <%= c.content %>
         </div>
@@ -91,7 +91,9 @@
     <% end %>
 </div>
 
-<h4><%= link_to "Thought一覧に戻る", thoughts_path %></h4>
+
+
+<h3><%= link_to "アイデア一覧に戻る", thoughts_path %></h3>
 
 <br>
 <br>

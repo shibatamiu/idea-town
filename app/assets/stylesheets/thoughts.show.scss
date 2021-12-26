@@ -5,8 +5,18 @@
 h3 {
 	font-family: "筑紫A丸ゴシック", sans-serif;
     width: 200px;
-    margin: 15px auto;
+    padding-top: 15px;
+	padding-bottom: 10px;
     text-align: center;
+	text-decoration: none;
+	color: #484848;
+}
+a{
+	text-decoration: none;
+	color: #484848;
+}
+a:hover{
+    color:#5e99b9;
 }
 .thought {
     border-top: dashed #8cbed6;
