@@ -1,4 +1,4 @@
-<h1></h1>
+<%= stylesheet_link_tag 'thoughts.index', :media => "all" %>
 
 <br>
 <br>
@@ -39,13 +39,19 @@ search
         <div class="thought">
         <div class="main-box">
         <div class="left-container">
+        <% if t.image? %>
+            <div class="left-box">
+            <p><%= image_tag t.image_url, width: "250" %></p>
+            </div>
+        <% end %>
+        <div class="right-box">
             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
             <h4><%= safe_join(t.title.split("\n"),tag(:br)) %></h4>
             <p><%= safe_join(t.about.split("\n"),tag(:br)) %></p>
-            <p><%= image_tag t.image_url, size: "250x200" if t.image? %></p>
             <ul class="cp_tag01"><% t.tags.each do |tag| %>
                 <li><%= tag.name %></li>
             <% end %></ul>
+        </div>
         </div>
 
         <br>
@@ -66,14 +72,14 @@ search
 
             <% if user_signed_in? %>
                 <% if current_user.already_counted?(t) %>
-                <div class="button">
+                <div class="button" tabindex="-1">
                     <%= link_to thought_count_path(id: t.id, thought_id: t.id), method: :delete do %>
                         <p>やってみた！</p>
                         </div>
                         <p class="count"><%= t.counts.count %></p>
                     <% end %>
                 <% else %>
-                <div class="button">
+                <div class="button" tabindex="-1">
                     <%= link_to thought_counts_path(id: t.id, thought_id: t.id), method: :post do %>
                         <p>やってみた！</p>
                         </div>
@@ -81,7 +87,7 @@ search
                     <% end %>
                 <% end %>
             <% else %>
-            <div class="button">
+            <div class="button" tabindex="-1">
                 <p>やってみた！の数 = </p>
                 </div>
                 <p class="count"><%= t.counts.count %></p>

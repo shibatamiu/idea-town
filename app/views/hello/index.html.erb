@@ -1,2 +1,23 @@
-<%= link_to "ログイン", thoughts_path %>
-<%= link_to "新規登録", new_user_registration_path %>
+<%= stylesheet_link_tag 'hello', :media => "all" %>
+
+
+<div class="main-image">
+    <%= image_tag "main-image.jpg" %>
+</div>
+
+<div class="sub-image">
+    <%= image_tag "sub-image.jpg" %>
+</div>
+
+
+<h2 class="text">あなたも自分流のアイデアをみんなと共有してみませんか？</h2>
+
+
+<div class="link-list">
+    <a class="link1"><%= link_to "新規登録", new_user_registration_path %></a>
+    <a class="link2"><%= link_to "ログイン", thoughts_path %></a>
+</div>
+<br>
+<br>
+<br>
+<br>

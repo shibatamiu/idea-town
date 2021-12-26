@@ -1,3 +1,50 @@
 // Place all the styles related to the hello controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main-image img{
+    width: 100%;
+    min-height: 100vh;
+}
+.sub-image img{
+    width: 100%;
+    min-height: 100vh;
+    margin-top: -100px;
+}
+.text{
+    font-family: "筑紫A丸ゴシック", sans-serif;
+    color: #484848;
+    margin-top: -150px;
+    text-align: center;
+}
+.link-list a{
+    text-decoration: none;
+    color:#696969;
+    font-size: 18px;
+}
+.link-list{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.link1{
+    margin-right: -3px;
+}
+.link2{
+    padding-left: 80px;
+    margin-right: -3px;
+}
+.link1:before{
+    font-family: 'Material Icons';
+    content: '\e7fe';
+    vertical-align: -2.5px;
+    margin-right:2px;
+    font-size:18px;
+}
+.link2:before{
+    font-family: 'Material Icons';
+    content: '\ea77';
+    vertical-align: -2.5px;
+    margin-right:2px;
+    font-size:18px;
+}

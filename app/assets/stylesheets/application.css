@@ -96,30 +96,35 @@ body {
 #list-1:before{
     font-family: 'Material Icons';
     content: '\e88a';
-    vertical-align: -2px;
+    vertical-align: -3px;
     margin-right:2px;
     font-size:18px;
-    
 }
-
 #list-2:before{
     font-family: 'Material Icons';
     content: '\e145';
-    vertical-align: -2px;
+    vertical-align: -3px;
     margin-right:2px;
     font-size:18px;
 }
 #list-3:before{
     font-family: 'Material Icons';
     content: '\e9ba';
-    vertical-align: -2px;
+    vertical-align: -3px;
     margin-right:2px;
     font-size:18px;
 }
 #list-4:before{
     font-family: 'Material Icons';
+    content: '\ea77';
+    vertical-align: -3px;
+    margin-right:2px;
+    font-size:18px;
+}
+#list-5:before{
+    font-family: 'Material Icons';
     content: '\e853';
-    vertical-align: -2px;
+    vertical-align: -3px;
     margin-right:2px;
     font-size:18px;
 }

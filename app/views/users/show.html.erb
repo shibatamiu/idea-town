@@ -1,4 +1,4 @@
-<h1>users#show</h1>
+<h1>マイページ</h1>
 <p>名前 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
 <p>プロフィール : <%= @user.profile %></p>
@@ -7,12 +7,76 @@
     <%= link_to "編集する", edit_user_registration_path %>
 <% end %>
 
+<br>
+<br>
+
 <h2>ユーザーの投稿一覧</h2>
+<div class="thoughts-container">
 <% @user.thoughts.each do |t| %>
-    <%= t.user.name %>
-    <%= t.title %>
-    <%= t.about %>
-<% end %>
+    <div class="thought">
+        <div class="main-box">
+        <div class="left-container">
+            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+            <h4><%= safe_join(t.title.split("\n"),tag(:br)) %></h4>
+            <p><%= safe_join(t.about.split("\n"),tag(:br)) %></p>
+            <p><%= image_tag t.image_url, size: "250x200" if t.image? %></p>
+            <ul class="cp_tag01"><% t.tags.each do |tag| %>
+                <li><%= tag.name %></li>
+            <% end %></ul>
+        </div>
+
+        <br>
+        <div class="box">
+            <% if user_signed_in? %>
+                <% if current_user.already_liked?(t) %>
+                    <%= link_to thought_like_path(id: t.id, thought_id: t.id), method: :delete do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                <% else %>
+                    <%= link_to thought_likes_path(id: t.id, thought_id: t.id), method: :post do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                <% end %>
+            <% else %>
+            <i class="fas fa-heart"></i><%= t.likes.count %>
+            <% end %>
+
+            <% if user_signed_in? %>
+                <% if current_user.already_counted?(t) %>
+                <div class="button" tabindex="-1">
+                    <%= link_to thought_count_path(id: t.id, thought_id: t.id), method: :delete do %>
+                        <p>やってみた！</p>
+                        </div>
+                        <p class="count"><%= t.counts.count %></p>
+                    <% end %>
+                <% else %>
+                <div class="button" tabindex="-1">
+                    <%= link_to thought_counts_path(id: t.id, thought_id: t.id), method: :post do %>
+                        <p>やってみた！</p>
+                        </div>
+                        <p class="count"><%= t.counts.count %></p>
+                    <% end %>
+                <% end %>
+            <% else %>
+            <div class="button" tabindex="-1">
+                <p>やってみた！の数 = </p>
+                </div>
+                <p class="count"><%= t.counts.count %></p>
+            <% end %>
+        </div>
+
+        <div class="right-container">
+            <p><%= t.created_at.strftime('%Y/%m/%d') %></p>
+            <p><%= link_to "詳細へ", thought_path(t.id) %></p>
+            <% if user_signed_in? && current_user.id == t.user_id %>
+                <p><%= link_to "編集する", edit_thought_path(t.id) %></p>
+                <p><%= link_to "削除する", thought_path(t.id), method: :delete %></p>
+            <% end %>
+        </div>
+        </div>
+    <% end %>
+</div>
 
 
-<%= link_to "Thought一覧に戻る", thoughts_path %>
+
+<%= link_to "アイデア一覧に戻る", thoughts_path %>

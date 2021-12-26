@@ -1,6 +1,27 @@
-// Place all the styles related to the ranks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.thoughts-container {
+    width: 70%;
+    margin: 10px auto;
+}
+h3 {
+	font-family: "筑紫A丸ゴシック", sans-serif;
+    width: 200px;
+    margin: 15px auto;
+    text-align: center;
+}
+.search{
+    text-align:center;
+}
+.search-1{
+	display: flex;
+	justify-content: center;
+}
+.search-1 .material-icons-outlined{
+	margin-right: 3px;
+	margin-top: 3px;
+}
+.link{
+	text-align:center;
+}
 .thought {
     border-top: dashed #8cbed6;
     margin-top: 10px;
@@ -125,3 +146,4 @@ p.count{
 	font-size: 16px;
 	color: #8cbed6;
 }
+
