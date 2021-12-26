@@ -12,17 +12,23 @@
 
 <h2>ユーザーの投稿一覧</h2>
 <div class="thoughts-container">
-<% @user.thoughts.each do |t| %>
-    <div class="thought">
+    <% @user.thoughts.each do |t| %>
+        <div class="thought">
         <div class="main-box">
         <div class="left-container">
+        <% if t.image? %>
+            <div class="left-box">
+            <p><%= image_tag t.image_url, width: "250" %></p>
+            </div>
+        <% end %>
+        <div class="right-box">
             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
             <h4><%= safe_join(t.title.split("\n"),tag(:br)) %></h4>
             <p><%= safe_join(t.about.split("\n"),tag(:br)) %></p>
-            <p><%= image_tag t.image_url, size: "250x200" if t.image? %></p>
             <ul class="cp_tag01"><% t.tags.each do |tag| %>
                 <li><%= tag.name %></li>
             <% end %></ul>
+        </div>
         </div>
 
         <br>
@@ -30,15 +36,15 @@
             <% if user_signed_in? %>
                 <% if current_user.already_liked?(t) %>
                     <%= link_to thought_like_path(id: t.id, thought_id: t.id), method: :delete do %>
-                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                        <p class="like1"><%= t.likes.count %></p>
                     <% end %>
                 <% else %>
                     <%= link_to thought_likes_path(id: t.id, thought_id: t.id), method: :post do %>
-                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                        <p class="like2"><%= t.likes.count %></p>
                     <% end %>
                 <% end %>
             <% else %>
-            <i class="fas fa-heart"></i><%= t.likes.count %>
+            <p class="like3"><%= t.likes.count %></p>
             <% end %>
 
             <% if user_signed_in? %>
@@ -76,6 +82,8 @@
         </div>
     <% end %>
 </div>
+
+
 
 
 

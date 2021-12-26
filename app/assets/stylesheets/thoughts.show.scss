@@ -11,6 +11,10 @@ h3 {
 	text-decoration: none;
 	color: #484848;
 }
+.link-index{
+	border-bottom: solid;
+	border-width: 1px;
+}
 a{
 	text-decoration: none;
 	color: #484848;
@@ -20,9 +24,11 @@ a:hover{
 }
 .thought {
     border-top: dashed #8cbed6;
+	border-width: 3px;
     margin-top: 10px;
     padding-top: 20px;
 }
+
 .left-container{
 	display: flex;
 }
@@ -141,4 +147,11 @@ a{
 p.count{
 	font-size: 16px;
 	color: #8cbed6;
+}
+
+.comment-wrapper{
+	border-top: solid;
+	border-width: 1px;
+	margin-top: 5px;
+	padding-top: 5px;
 }

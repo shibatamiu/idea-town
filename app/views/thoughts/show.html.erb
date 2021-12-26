@@ -71,7 +71,7 @@
 
 
 <div class="comment-wrapper">
-    <p>コメント一覧</p>
+    <h4>コメント一覧</h4>
     <% @comments.each do |c| %>
         <div>
             <%= c.user.name unless c.user.blank? %>
@@ -93,7 +93,7 @@
 
 
 
-<h3><%= link_to "アイデア一覧に戻る", thoughts_path %></h3>
+<h3 class="link-index" ><%= link_to "アイデア一覧に戻る", thoughts_path %></h3>
 
 <br>
 <br>
