@@ -8,8 +8,16 @@ h3 {
     margin: 15px auto;
     text-align: center;
 }
+.search-box{
+	display: flex;
+	justify-content: center;
+}
 .search{
+	width: 600px;
+	padding-bottom: 30px;
     text-align:center;
+	border: solid;
+	border-width: 1px;
 }
 .search-1{
 	display: flex;
@@ -21,6 +29,9 @@ h3 {
 }
 .link{
 	text-align:center;
+}
+.link a{
+	color: #5e99b9;
 }
 .thought {
     border-top: dashed #8cbed6;

@@ -2,7 +2,7 @@
 
 <br>
 <br>
-<div class="search">
+<div class="search-container">
 <%= form_tag ranks_rank_path, method: :get, class: 'boards__searchForm' do %>
     <%= select_tag :tag_id,
                 options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
