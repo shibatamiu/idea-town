@@ -8,8 +8,10 @@
 
 Tag.create([
     { name: '食品' },
-    { name: '美容' },
     { name: '収納'},
+    { name: '掃除' },
+    { name: '雑貨' },
+    { name: '美容'},
     { name: '趣味'},
     { name: 'その他'},
     ])
