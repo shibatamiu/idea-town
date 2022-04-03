@@ -1,0 +1,39 @@
+.field1 textarea{
+    margin-left:20px;
+    width: 550px;
+    height: 50px;
+}
+.field2 textarea{
+    margin-left:20px;
+    width: 550px;
+    height: 100px;
+}
+.field3{
+    margin-left:20px;
+}
+.field4{
+    margin-left:20px;
+}
+.field3 input[type="file"] {
+    width: 300px;
+    height: 40px;
+}
+.field4 input[type="submit"] {
+    width: 200px;
+    height: 30px;
+}
+.check_box{
+    margin-left:20px;
+}
+span{
+    font-weight: bold;
+}
+.link a{
+    font-family: "筑紫A丸ゴシック", sans-serif;
+    font-weight:bold;
+    font-size: 17px;
+    color: #696969;
+}
+.link a:hover{
+    color:#5e99b9;
+}

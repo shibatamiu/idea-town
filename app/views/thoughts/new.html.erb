@@ -1,16 +1,18 @@
+<%= stylesheet_link_tag 'thoughts.new', :media => "all" %>
+
 <h1></h1>
 <h3>新規アイデア</h3>
 
 <%= form_for @thought do |f| %>
-  <div class="field">
-    <%= f.label :title %>
+  <div class="field1">
+    <p>タイトル</p>
     <%= f.text_area :title, :size => 140 %>
   </div>
-  <div class="field">
-    <%= f.label :about %>
+  <div class="field2">
+    <p>内容</p>
     <%= f.text_area :about, :size => 140 %>
   </div>
-  <div class="field">
+  <div class="field3">
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
@@ -27,8 +29,13 @@
     <% end %>
   </div>
 
-  
-  <%= f.submit "投稿する" %>
+  <br>
+  <div class="field4">
+    <%= f.submit "投稿する" %>
+  </div>
 <% end %>
 
-<%= link_to "アイデア一覧に戻る", thoughts_path %>
+<br>
+<div class="link">
+<a><%= link_to "アイデア一覧に戻る", thoughts_path %></a>
+</div>

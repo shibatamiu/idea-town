@@ -2,11 +2,29 @@
 
 
 <div class="main-image">
-    <%= image_tag "main-image-final.jpg" %>
+    <%= image_tag "login-image1.jpg" %>
+    <h4>ABOUT</h4>
+    <div class="text-box1">
+        <p>Idea Townは、</p>
+        <p>"ユーザーイノベーション"のたまごとなるような</p>
+        <p>アイデアが集まるサイトです。</p>
+    </div>
 </div>
 
+
+
+
 <div class="sub-image">
-    <%= image_tag "sub-image.jpg" %>
+    <%= image_tag "login-image2.jpg" %>
+    <h1>ユーザーイノベーションとは？</h1>
+    <div class="text-box2">
+        <p>ユーザーイノベーションとは、簡単に言うと「消費者が既存の商品から新しい価値を生み出す」ことです。</p>
+        <br>
+        <p>例えばマスキングテープは、元々は建築塗装などで塗装しない部分をガードするために使われていました。しかし、あるカフェで店内の装飾やラッピングに利用し始めたことから、文具や雑貨の装飾用に販売されるようになりました。他にも、食品用ラップやジーンズなどもユーザーイノベーションの例です。</p>
+        <br>
+        <p>このサイトでは、様々な人と交流しながらユーザーイノベーションにつながるようなアイデアを共有することができます。</p>
+    </div>
+
 </div>
 
 
@@ -14,8 +32,8 @@
 
 
 <div class="link-list">
-    <a class="link1"><%= link_to "新規登録", new_user_registration_path %></a>
-    <a class="link2"><%= link_to "ログイン", thoughts_path %></a>
+    <a rel="nofollow" data-method="get" href="/users/sign_in" id="list-6">新規登録</a>
+    <a rel="nofollow" data-method="post" href="/users/sign_in" id="list-4">ログイン</a>
 </div>
 <br>
 <br>

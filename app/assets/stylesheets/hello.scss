@@ -2,14 +2,77 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.main-image{
+    position: relative;
+}
 .main-image img{
     width: 100%;
     min-height: 100vh;
+    z-index:1;
+}
+.main-image h4 {
+	font-family: "ヒラギノ角ゴシック W3", sans-serif;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    color:#949593;
+    text-decoration:underline;
+}
+.text-box1 p {
+	font-family: "ヒラギノ角ゴシック W3", sans-serif;
+    font-size:20px;
+    color:#949593;
+    margin-top: 0px;
+}
+.text-box1{
+    position: absolute;
+    text-align:center;
+    top: 42%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
 }
 .sub-image img{
     width: 100%;
     min-height: 100vh;
-    margin-top: -100px;
+    margin-top:-50px;
+}
+.sub-image h1{
+    font-family: "筑紫A丸ゴシック", sans-serif;
+    font-size: 40px;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    color:#5d8aa8;
+
+}
+.text-box2{
+    position: absolute;
+    text-align: justify;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    top: 150%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    border-left: solid;
+    border-right: solid;
+    border-width: 1.5px;
+}
+.text-box2 p{
+    font-size: 20px;
+    font-weight: lighter;
+    color:#949593;
 }
 .text{
     font-family: "筑紫A丸ゴシック", sans-serif;
@@ -21,30 +84,14 @@
     text-decoration: none;
     color:#696969;
     font-size: 18px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 .link-list{
     display: flex;
     justify-content: center;
     padding: 50px;
 }
-.link1{
-    margin-right: -3px;
-}
-.link2{
-    padding-left: 80px;
-    margin-right: -3px;
-}
-.link1:before{
-    font-family: 'Material Icons';
-    content: '\e7fe';
-    vertical-align: -2.5px;
-    margin-right:2px;
-    font-size:18px;
-}
-.link2:before{
-    font-family: 'Material Icons';
-    content: '\ea77';
-    vertical-align: -2.5px;
-    margin-right:2px;
-    font-size:18px;
+.link-list a:hover{
+    color:#5e99b9;
 }
