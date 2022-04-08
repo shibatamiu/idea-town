@@ -24,7 +24,9 @@
   <body>
     <header class="page-header">
     <div class="image-logo">
-    <%= image_tag "logo3.png", size: "100×100" %>
+    <a href="/">
+      <%= image_tag "logo3.png", size: "100×100" %>
+    </a>
     </div>
       <div class="header-list">
       <ul>
@@ -32,7 +34,7 @@
 
         <li>
         <% if user_signed_in? %><a href="/thoughts/new" id="list-2">新規投稿</a>
-        <% else %><a rel="nofollow" data-method="get" href="/users/sign_in" id="list-6">新規登録</a>
+        <% else %><a rel="nofollow" data-method="get" href="/users/sign_up" id="list-6">新規登録</a>
         <% end %></li>
 
         <li>

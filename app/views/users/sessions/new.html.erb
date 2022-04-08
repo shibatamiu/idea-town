@@ -1,22 +1,27 @@
-<%= stylesheet_link_tag 'users.new', :media => "all" %>
+<%= stylesheet_link_tag 'sessions.new', :media => "all" %>
 
 
 <h2>Log in</h2>
+<br>
+
+
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <p>メールアドレス</p><br><br>
+  <div class="field-1">
+    <p>メールアドレス</p>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  <br>
 
-  <div class="field">
-    <p>パスワード</p><br />
+  <div class="field-2">
+    <p>パスワード</p>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
+<br>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field-check">
       <%= f.check_box :remember_me %>
       <p>Remember me?</p>
     </div>
@@ -27,4 +32,4 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+

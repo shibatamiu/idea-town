@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     get 'hello/index' => 'hello#index'
     get 'ranks/rank' =>'ranks#rank'
 
+    as :user do
+      get 'thoughts',:to =>'devise/registrations#edit',:as => :user_root
+    end
+
 
 root 'hello#index'
 end
